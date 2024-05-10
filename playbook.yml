@@ -1,0 +1,17 @@
+# Ansible playbook for deploy the Create Go App project.
+---
+#
+# Playbook for deploy.
+#
+- name: Deploy the Create Go App project
+  hosts: cgapp_project
+
+  #
+  # List of all roles.
+  #
+  roles:
+    - { role: docker, tags: [docker] }
+    - { role: backend, tags: [backend] }
+    - { role: redis, tags: [redis] }
+    - { role: postgres, tags: [postgres] }
+    - { role: traefik, tags: [traefik] }

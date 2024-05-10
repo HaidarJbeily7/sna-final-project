@@ -1,0 +1,18 @@
+# A default .gitignore for Create Go App project.
+
+# macOS
+**/.DS_store
+
+# Go builds
+**/app/
+**/build/
+
+# Temporary files
+tmp/
+
+# Node.js dependencies
+**/node_modules/
+
+# Files
+hosts.ini
+*.out

@@ -1,0 +1,4 @@
+# A default .gitattributes for Create Go App project.
+
+go.sum merge=union
+*.go text eol=lf
