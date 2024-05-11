@@ -55,4 +55,5 @@ jobs:
       
       - name: Run Build
         run: make build
+        working-directory: ./backend
         shell: bash
