@@ -83,3 +83,7 @@ docker.stop.redis:
 
 swag:
 	swag init
+
+docker.migrate.up:
+	docker run -v $(MIGRATIONS_FOLDER)/migrations --network dev-network migrate/migrate
+    	-path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" up
