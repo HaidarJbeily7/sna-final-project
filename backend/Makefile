@@ -85,6 +85,6 @@ swag:
 	swag init
 
 docker.migrate.up:
-	docker run -v $(MIGRATIONS_FOLDER)/migrations --network dev-network migrate/migrate \
-    	-path $(MIGRATIONS_FOLDER) -database "$(DATABASE_URL)" up
+	docker run -v $(MIGRATIONS_FOLDER):/migrations --network sna-final-project_dev-network migrate/migrate \
+    	-path=/migrations/ -database "$(DATABASE_URL)" up
 	
