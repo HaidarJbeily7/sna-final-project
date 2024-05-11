@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
 
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -57,3 +58,21 @@ jobs:
         run: make build
         working-directory: ./backend
         shell: bash
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Restart Docker Container
+        uses: fifsky/ssh-action@master
+        with:
+          user: root
+          host: ${{ secrets.REMOTE_HOST }}
+          pass: ${{ secrets.PASS }}
+          command: |
+            cd sna-final-project
+            git pull origin main
+            docker-compose up -d --force-recreate

@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  fiber:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: cgapp-fiber
+    ports:
+      - "5001:5001"
+    networks:
+      - dev-network
+
+  postgres:
+    image: postgres
+    container_name: cgapp-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    volumes:
+      - ${HOME}/dev-postgres/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - dev-network
+
+  redis:
+    image: redis
+    container_name: cgapp-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - dev-network
+
+networks:
+  dev-network:
+    driver: bridge
