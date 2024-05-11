@@ -28,6 +28,7 @@ jobs:
           working-directory: ./backend
 
   test:
+    needs: lint
     runs-on: ubuntu-latest
     
     steps:
@@ -60,6 +61,7 @@ jobs:
         shell: bash
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
