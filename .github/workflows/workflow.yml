@@ -20,12 +20,12 @@ jobs:
 
       - name: Set up Go
         uses: actions/setup-go@v3
+        working-directory: ./backend
         with:
           go-version: 1.21
           check-latest: true
           cache: true
-          working-directory: ./backend
-
+          
       - uses: securego/gosec@master
         
       - name: golangci-lint
