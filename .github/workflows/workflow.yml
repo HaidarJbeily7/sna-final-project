@@ -78,4 +78,4 @@ jobs:
             cd sna-final-project
             git pull origin main
             docker-compose down
-            docker-compose up -d
+            docker-compose up -d --force-recreate
