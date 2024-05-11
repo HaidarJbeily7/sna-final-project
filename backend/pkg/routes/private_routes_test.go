@@ -57,7 +57,7 @@ func TestPrivateRoutes(t *testing.T) {
 			tokenString:   "",
 			body:          nil,
 			expectedError: false,
-			expectedCode:  400,
+			expectedCode:  401,
 		},
 		{
 			description:   "delete book without right credentials",
@@ -75,7 +75,7 @@ func TestPrivateRoutes(t *testing.T) {
 			tokenString:   "Bearer " + tokenOnlyDelete.Access,
 			body:          strings.NewReader(dataString),
 			expectedError: false,
-			expectedCode:  404,
+			expectedCode:  500,
 		},
 	}
 

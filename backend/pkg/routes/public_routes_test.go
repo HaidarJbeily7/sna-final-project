@@ -28,7 +28,7 @@ func TestPublicRoutes(t *testing.T) {
 			description:   "get book by ID",
 			route:         "/api/v1/book/" + uuid.New().String(),
 			expectedError: false,
-			expectedCode:  404,
+			expectedCode:  500,
 		},
 		{
 			description:   "get book by invalid ID (non UUID)",

@@ -1,24 +1,12 @@
-# Fiber backend template for [Create Go App CLI](https://github.com/create-go-app/cli)
+# Book Managment System
 
-<img src="https://img.shields.io/badge/Go-1.19+-00ADD8?style=for-the-badge&logo=go" alt="go version" />&nbsp;<a href="https://goreportcard.com/report/github.com/create-go-app/fiber-go-template" target="_blank"><img src="https://img.shields.io/badge/Go_report-A+-success?style=for-the-badge&logo=none" alt="go report" /></a>&nbsp;<img src="https://img.shields.io/badge/license-Apache_2.0-red?style=for-the-badge&logo=none" alt="license" />
-
-[Fiber](https://gofiber.io/) is an Express.js inspired web framework build on top of Fasthttp, the fastest HTTP engine for Go. Designed to ease things up for **fast** development with **zero memory allocation** and **performance** in mind.
+Written [Fiber](https://gofiber.io/) is an Express.js inspired web framework build on top of Fasthttp, the fastest HTTP engine for Go. Designed to ease things up for **fast** development with **zero memory allocation** and **performance** in mind.
 
 ## ⚡️ Quick start
 
-1. Create a new project with Fiber:
+1. Rename `.env.example` to `.env` and fill it with your environment values.
 
-```bash
-cgapp create
-
-# Choose a backend framework:
-#   net/http
-# > fiber
-#   chi
-```
-
-2. Rename `.env.example` to `.env` and fill it with your environment values.
-3. Install [Docker](https://www.docker.com/get-started) and the following useful Go tools to your system:
+2. Install [Docker](https://www.docker.com/get-started) and the following useful Go tools to your system:
 
    - [golang-migrate/migrate](https://github.com/golang-migrate/migrate#cli-usage) for apply migrations
    - [github.com/swaggo/swag](https://github.com/swaggo/swag) for auto-generating Swagger API docs
@@ -26,17 +14,17 @@ cgapp create
    - [github.com/go-critic/go-critic](https://github.com/go-critic/go-critic) for checking Go the best practice issues
    - [github.com/golangci/golangci-lint](https://github.com/golangci/golangci-lint) for checking Go linter issues
 
-4. Run project by this command:
+3. Run project by this command:
 
 ```bash
-make docker.run
+   make docker.run
 ```
 
 5. Go to API Docs page (Swagger): [127.0.0.1:5000/swagger/index.html](http://127.0.0.1:5000/swagger/index.html)
 
 ![Screenshot](https://user-images.githubusercontent.com/11155743/112715187-07dab100-8ef0-11eb-97ea-68d34f2178f6.png)
 
-## 🗄 Template structure
+## 🗄 Project structure
 
 ### ./app
 
@@ -107,7 +95,3 @@ REDIS_PORT=6379
 REDIS_PASSWORD=""
 REDIS_DB_NUMBER=0
 ```
-
-## ⚠️ License
-
-Apache 2.0 &copy; [Vic Shóstak](https://shostak.dev/) & [True web artisans](https://1wa.co/).
