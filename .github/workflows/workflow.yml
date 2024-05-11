@@ -5,11 +5,28 @@ on:
   push:
     branches: [main]
 
-env:
-  CARGO_TERM_COLOR: always
-
 jobs:
-  test-and-lint:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # v4.1.1
+      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+        with:
+          submodules: 'true'
+
+      - name: Set up Go
+        uses: actions/setup-go@v4.1.0
+        with:
+          go-version-file: './backend/go.mod'
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          working-directory: ./backend
+
+  test:
     runs-on: ubuntu-latest
     
     steps:
@@ -23,14 +40,19 @@ jobs:
         with:
           go-version-file: './backend/go.mod'
           
-      - uses: securego/gosec@master
+      - name: Check Security Vulnerabilities
+        uses: securego/gosec@master
         
-      - name: golangci-lint
+      - name: Linting
         uses: golangci/golangci-lint-action@v6
         with:
           version: latest
           working-directory: ./backend
 
-      - name: go test
+      - name: Run Tests
         run: make test
+        shell: bash
+      
+      - name: Run Build
+        run: make build
         shell: bash
