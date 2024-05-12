@@ -14,10 +14,8 @@ services:
   postgres:
     image: postgres
     container_name: cgapp-postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: postgres
+    env_file:
+      - .env
     volumes:
       - ${HOME}/dev-postgres/data:/var/lib/postgresql/data
     ports:

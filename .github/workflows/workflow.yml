@@ -77,5 +77,38 @@ jobs:
           command: |
             cd sna-final-project
             git pull origin main
+
+            cd backend
+            # Remove existing .env file
+            rm -f .env
+
+            # Create a new .env file with secrets
+            echo "STAGE_STATUS=${{ secrets.STAGE_STATUS }}" >> .env
+            echo "SERVER_HOST=${{ secrets.SERVER_HOST }}" >> .env
+            echo "SERVER_PORT=${{ secrets.SERVER_PORT }}" >> .env
+            echo "SERVER_READ_TIMEOUT=${{ secrets.SERVER_READ_TIMEOUT }}" >> .env
+            echo "JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }}" >> .env
+            echo "JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT=${{ secrets.JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT }}" >> .env
+            echo "JWT_REFRESH_KEY=${{ secrets.JWT_REFRESH_KEY }}" >> .env
+            echo "JWT_REFRESH_KEY_EXPIRE_HOURS_COUNT=${{ secrets.JWT_REFRESH_KEY_EXPIRE_HOURS_COUNT }}" >> .env
+            echo "DB_TYPE=${{ secrets.DB_TYPE }}" >> .env
+            echo "DB_HOST=${{ secrets.DB_HOST }}" >> .env
+            echo "DB_PORT=${{ secrets.DB_PORT }}" >> .env
+            echo "DB_USER=${{ secrets.DB_USER }}" >> .env
+            echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+            echo "DB_NAME=${{ secrets.DB_NAME }}" >> .env
+            echo "DB_SSL_MODE=${{ secrets.DB_SSL_MODE }}" >> .env
+            echo "DB_MAX_CONNECTIONS=${{ secrets.DB_MAX_CONNECTIONS }}" >> .env
+            echo "DB_MAX_IDLE_CONNECTIONS=${{ secrets.DB_MAX_IDLE_CONNECTIONS }}" >> .env
+            echo "DB_MAX_LIFETIME_CONNECTIONS=${{ secrets.DB_MAX_LIFETIME_CONNECTIONS }}" >> .env
+            echo "REDIS_HOST=${{ secrets.REDIS_HOST }}" >> .env
+            echo "REDIS_PORT=${{ secrets.REDIS_PORT }}" >> .env
+            echo "REDIS_PASSWORD=${{ secrets.REDIS_PASSWORD }}" >> .env
+            echo "REDIS_DB_NUMBER=${{ secrets.REDIS_DB_NUMBER }}" >> .env
+            cd ..
+            rm -f .env
+            echo "POSTGRES_USER=${{ secrets.DB_USER }}" >> .env
+            echo "POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
+            echo "POSTGRES_NAME=${{ secrets.DB_NAME }}" >> .env
             docker-compose down
             docker-compose up -d --force-recreate
