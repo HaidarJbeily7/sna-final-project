@@ -1,7 +1,6 @@
 name: CI/CD
 
 on:
-  pull_request:
   push:
     branches: [main]
 
@@ -111,4 +110,4 @@ jobs:
             echo "POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}" >> .env
             echo "POSTGRES_NAME=${{ secrets.DB_NAME }}" >> .env
             docker-compose down
-            docker-compose up -d --force-recreate
+            docker-compose up  --build -d
